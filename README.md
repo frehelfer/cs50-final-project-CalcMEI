@@ -47,7 +47,7 @@ There are four results, being:
 - Exempt profit
 - Taxable profit
 
-If the Taxable Profit is greater than R$ 28.559,70 the individual business owner have to declare and pay the personal annual tax return.
+If the Taxable Profit is greater than R$ 35.584,00 the individual business owner have to declare and pay the personal annual tax return.
 
 There is a message in the result container that changes according to the result.
 
