@@ -232,8 +232,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/core/calculate.test.js` has one test per AC using the spec's numbers, plus a made-up config (limit 40000, serviços 0.5) that changes the result
-- [ ] Quick gate passes and typecheck exits 0
+- [x] `tests/core/calculate.test.js` has one test per AC using the spec's numbers, plus a made-up config (limit 40000, serviços 0.5) that changes the result
+- [x] Quick gate passes and typecheck exits 0
 
 **Tests**: unit
 **Gate**: quick
