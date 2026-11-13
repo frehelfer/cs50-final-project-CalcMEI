@@ -350,10 +350,10 @@ T16
 
 **Done when**:
 
-- [ ] `tests/dom.test.js` adds one case that loads index.html with its real `<script type="module">` (jsdom + file resources, or a static import of the entry against a jsdom global) and types "100000" into serviços, which shows "OBRIGATÓRIA"
-- [ ] `tests/core/purity.test.js` LANG-01 scan list extended to `public/scripts/calculator.js`, `calculator-dom.js`, `presenter.js` and `accordion.js` (T10 scans only core + tests, because the legacy calculator.js stays pt-BR until this task)
+- [x] `tests/dom.test.js` adds one case that loads index.html with its real `<script type="module">` (jsdom + file resources, or a static import of the entry against a jsdom global) and types "100000" into serviços, which shows "OBRIGATÓRIA"
+- [x] `tests/core/purity.test.js` LANG-01 scan list extended to `public/scripts/calculator.js`, `calculator-dom.js`, `presenter.js` and `accordion.js` (T10 scans only core + tests, because the legacy calculator.js stays pt-BR until this task)
 - [ ] Manual walk: `npx serve public`, type the spec values, compare against production calcmei.com.br
-- [ ] Build gate passes
+- [x] Build gate passes
 
 **Tests**: integration
 **Gate**: build

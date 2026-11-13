@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -233,5 +234,23 @@ describe('DOM adapter placeholders', () => {
 		expect(doc.getElementById('lucro-isento')?.textContent).toBe(`R$${NBSP}50.000,00`);
 		expect(doc.getElementById('result-title')?.textContent).toBe('OBRIGATÓRIA');
 		expect(doc.getElementById('result-text')?.innerHTML).toContain('<b>R$ 40.000,00</b>');
+	});
+});
+
+describe('calculator.js entry', () => {
+	it('UI-01 loading the module entry on index.html wires the page: services 100,000.00 shows "OBRIGATÓRIA"', async () => {
+		// jsdom does not run <script type="module">, so the entry is imported against the global jsdom document.
+		document.body.innerHTML = new JSDOM(html).window.document.body.innerHTML;
+
+		await import('../public/scripts/calculator.js');
+
+		const services = /** @type {HTMLInputElement} */ (document.getElementById('serviços'));
+		services.value = '10000000';
+		services.dispatchEvent(new Event('input'));
+
+		expect(services.value).toBe(`R$${NBSP}100.000,00`);
+		expect(document.getElementById('result-title')?.textContent).toBe('OBRIGATÓRIA');
+		expect(document.getElementById('result-title')?.className).toBe('red');
+		expect(document.getElementById('lucro-tributável')?.textContent).toBe(`R$${NBSP}68.000,00`);
 	});
 });

@@ -7,6 +7,9 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const CORE_DIR = path.join(ROOT, 'public/scripts/core');
 const PRESENTER = path.join(ROOT, 'public/scripts/presenter.js');
 const TESTS_DIR = path.join(ROOT, 'tests');
+const BROWSER_SCRIPTS = ['calculator.js', 'calculator-dom.js', 'presenter.js', 'accordion.js'].map((name) =>
+	path.join(ROOT, 'public/scripts', name)
+);
 
 /**
  * Removes comments, string literals and regex literals from JS source, keeping the code
@@ -184,6 +187,7 @@ describe('core and presenter purity', () => {
 describe('English code', () => {
 	const files = [
 		...listJsFiles(CORE_DIR),
+		...BROWSER_SCRIPTS,
 		...listJsFiles(TESTS_DIR).filter((file) => !file.startsWith(path.join(TESTS_DIR, 'fixtures') + path.sep)),
 	];
 
