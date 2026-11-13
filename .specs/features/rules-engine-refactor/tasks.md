@@ -194,8 +194,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/core/rules.test.js` asserts every 2026 value and that `validateRules(rules2026)` passes
-- [ ] Quick gate passes
+- [x] `tests/core/rules.test.js` asserts every 2026 value and that `validateRules(rules2026)` passes
+- [x] Quick gate passes
 
 **Tests**: unit
 **Gate**: quick
