@@ -22,7 +22,7 @@
 		<link rel="stylesheet" href="/styles/base.css" />
 		<link rel="stylesheet" href="/styles/calculator.css" />
 
-		<script src="/scripts/calculator.js" defer></script>
+		<script type="module" src="/scripts/calculator.js"></script>
 		<script src="/scripts/accordion.js" defer></script>
 		<link rel="shortcut icon" href="/images/favicon.ico" />
 	</head>
@@ -47,11 +47,13 @@
 		<main>
 			<div class="border">
 				<h1>Calculadora Declaração IRPF - MEI</h1>
-				<p>Ano-Calendário de 2025 - Exercício de 2026</p>
+				<p>Ano-Calendário de <span data-rule="calendarYear">2025</span> - Exercício de <span data-rule="fiscalYear">2026</span></p>
 				<h6>
-					Última atualização em 09/11/2026 |
+					Última atualização em <span data-rule="lastUpdated">09/11/2026</span> |
 					<a
 						target="_blank"
+						data-rule="legalReferenceName"
+						data-rule-href="legalReferenceUrl"
 						href="https://www.in.gov.br/web/dou/-/instrucao-normativa-rfb-n-2.312-de-13-de-marco-de-2026-692748727"
 						>IN RFB Nº 2.312/2026</a
 					>
@@ -151,7 +153,7 @@
 							</div>
 						</div>
 						<p class="accordion-content">
-							É a soma de todos os valores recebidos ao longo do ano de 2025.<br /><br />
+							É a soma de todos os valores recebidos ao longo do ano de <span data-rule="calendarYear">2025</span>.<br /><br />
 						</p>
 						<div class="resultados-value moneyInput" id="receita-bruta-apurado">R$ 0,00</div>
 					</div>
@@ -179,18 +181,18 @@
 							<div class="texto-conta">
 								<h4>Rendimento Isento</h4>
 								<p class="conta">
-									(<span id="conta-serviço-p">0</span> * 0,32) + (<span id="conta-comércio-p"
+									(<span id="conta-serviço-p">0</span> * <span data-rule="servicesRateDecimal">0,32</span>) + (<span id="conta-comércio-p"
 										>0</span
 									>
-									* 0,08) + (<span id="conta-transporte-p">0</span> * 0,16)
+									* <span data-rule="commerceRateDecimal">0,08</span>) + (<span id="conta-transporte-p">0</span> * <span data-rule="transportRateDecimal">0,16</span>)
 								</p>
 							</div>
 						</div>
 						<p class="accordion-content">
 							Para cada categoria de MEI existe uma parcela isenta de tributação, sendo:<br /><br />
-							32% - Prestação de Serviços.<br />
-							8% - Comércio, Indústria e Transporte de Cargas.<br />
-							16% - Transporte de Passageiros.<br /><br />
+							<span data-rule="servicesRatePercent">32%</span> - Prestação de Serviços.<br />
+							<span data-rule="commerceRatePercent">8%</span> - Comércio, Indústria e Transporte de Cargas.<br />
+							<span data-rule="transportRatePercent">16%</span> - Transporte de Passageiros.<br /><br />
 						</p>
 						<div class="resultados-value moneyInput green" id="lucro-isento">R$ 0,00</div>
 					</div>
@@ -210,7 +212,7 @@
 							O Rendimento Tributável é o valor considerado para saber se você deve ou não pagar o
 							imposto de renda pessoa física. Para chegar nessa conta deve se fazer o Lucro Apurado
 							menos o Rendimento Isento. <br /><br />
-							Se o valor ficar acima de R$ 35.584,00, você é obrigado a declarar o IRPF.<br /><br />
+							Se o valor ficar acima de <span data-rule="limit">R$ 35.584,00</span>, você é obrigado a declarar o IRPF.<br /><br />
 						</p>
 						<div class="resultados-value moneyInput green" id="lucro-tributável">R$ 0,00</div>
 					</div>
@@ -225,7 +227,7 @@
 						<p id="result-text">
 							<br />
 							Se você recebeu outros valores como Pessoa Física e a soma desses valores com o
-							Rendimento Tributável ficou maior que R$ 35.584,00, será necessário realizar o IRPF.
+							Rendimento Tributável ficou maior que <span data-rule="limit">R$ 35.584,00</span>, será necessário realizar o IRPF.
 							Acompanhe abaixo mais informações.
 						</p>
 					</div>
@@ -246,20 +248,20 @@
 
 				<!-- Radio Checkbox  -->
 				<section class="container checkbox">
-					<h2>Você se enquadra em alguma dessas opções como Pessoa Física em 2025?</h2>
+					<h2>Você se enquadra em alguma dessas opções como Pessoa Física em <span data-rule="calendarYear">2025</span>?</h2>
 					<div class="items">
 						<div class="list">
-							<h4>- Recebeu rendimentos isentos acima de R$ 200.000,00?</h4>
-							<h4>- Vendeu ativos na bolsa de valores somando mais de R$ 40.000,00, ou com lucro tributável?</h4>
-							<h4>- Obteve receita bruta superior a R$ 177.920,00 em atividade rural?</h4>
-							<h4>- Possui bens no valor acima de R$ 800.000,00?</h4>
+							<h4>- Recebeu rendimentos isentos acima de <span data-rule="exemptIncomeLimit">R$ 200.000,00</span>?</h4>
+							<h4>- Vendeu ativos na bolsa de valores somando mais de <span data-rule="stockTradingLimit">R$ 40.000,00</span>, ou com lucro tributável?</h4>
+							<h4>- Obteve receita bruta superior a <span data-rule="ruralRevenueLimit">R$ 177.920,00</span> em atividade rural?</h4>
+							<h4>- Possui bens no valor acima de <span data-rule="assetsLimit">R$ 800.000,00</span>?</h4>
 							<h4>- Vendeu imóveis com isenção de IR?</h4>
 						</div>
 
 						<div class="custom-radio">
 							<p>
 								Caso sua resposta seja sim, você é obrigado a realizar a declaração do IRPF mesmo se
-								o rendimento tributável ficou abaixo de R$ 35.584,00.
+								o rendimento tributável ficou abaixo de <span data-rule="limit">R$ 35.584,00</span>.
 							</p>
 						</div>
 					</div>

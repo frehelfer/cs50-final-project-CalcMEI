@@ -190,7 +190,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | UI-02 | P1: Page unchanged | Design | Implementing |
 | UI-03 | P1: Page unchanged | Design | Implementing |
 | UI-04 | P1: Page unchanged | Design | Implementing |
-| UI-05 | P1: Page unchanged | Design | Pending |
+| UI-05 | P1: Page unchanged | Design | Implementing |
 | UI-06 | P1: Page unchanged | Design | Pending |
 | UI-07 | P1: Page unchanged | Design | Implementing |
 | TS-01 | P2: TS ready | Design | Pending |

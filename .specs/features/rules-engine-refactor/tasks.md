@@ -310,9 +310,9 @@ T16
 
 **Done when**:
 
-- [ ] `tests/html-rules.test.js` asserts that every `[data-rule]` static text (and href) equals `yearTexts(activeRules)`, that every key appears at least once, and that no text node outside a placeholder contains "35.584", "177.920", "800.000", "200.000", "40.000", "2025" or "2026"
-- [ ] The page's `textContent` is identical before and after, once spans are ignored (assertion in the same test, against the legacy HTML from `git show 7b33eee:public/index.html` saved to `tests/fixtures/index.legacy.html`)
-- [ ] Full gate passes
+- [x] `tests/html-rules.test.js` asserts that every `[data-rule]` static text (and href) equals `yearTexts(activeRules)`, that every key appears at least once, and that no text node outside a placeholder contains "35.584", "177.920", "800.000", "200.000", "40.000", "2025" or "2026"
+- [x] The page's `textContent` is identical before and after, once spans are ignored (assertion in the same test, against the legacy HTML from `git show 7b33eee:public/index.html` saved to `tests/fixtures/index.legacy.html`)
+- [x] Full gate passes
 
 **Tests**: integration
 **Gate**: full
