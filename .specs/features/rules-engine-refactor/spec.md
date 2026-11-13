@@ -186,12 +186,12 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | RULES-05 | P1: Rules per year | Design | Pending |
 | RULES-06 | P1: Rules per year | Design | Pending |
 | RULES-07 | P1: Rules per year | Design | Pending |
-| UI-01 | P1: Page unchanged | Design | Pending |
+| UI-01 | P1: Page unchanged | Design | Implementing |
 | UI-02 | P1: Page unchanged | Design | Implementing |
 | UI-03 | P1: Page unchanged | Design | Implementing |
 | UI-04 | P1: Page unchanged | Design | Implementing |
 | UI-05 | P1: Page unchanged | Design | Implementing |
-| UI-06 | P1: Page unchanged | Design | Pending |
+| UI-06 | P1: Page unchanged | Design | Implementing |
 | UI-07 | P1: Page unchanged | Design | Implementing |
 | TS-01 | P2: TS ready | Design | Pending |
 | TS-02 | P2: TS ready | Design | Pending |

@@ -330,9 +330,9 @@ T16
 
 **Done when**:
 
-- [ ] `tests/dom.test.js` UI-01: two JSDOM windows of index.html, legacy (with an `innerText`→`textContent` shim) vs new. For 12 fixed input sets (spec examples, boundary, negative, empty, huge) plus 200 seeded random ones, typing into each input yields identical text, classes and `#result-text` innerHTML for every result and `#conta-*` element
-- [ ] UI-04: after `init`, every placeholder shows `yearTexts(activeRules)`. UI-06: with the made-up config, every placeholder shows that config's values
-- [ ] Full gate passes and typecheck exits 0
+- [x] `tests/dom.test.js` UI-01: two JSDOM windows of index.html, legacy (with an `innerText`→`textContent` shim) vs new. For 12 fixed input sets (spec examples, boundary, negative, empty, huge) plus 200 seeded random ones, typing into each input yields identical text, classes and `#result-text` innerHTML for every result and `#conta-*` element
+- [x] UI-04: after `init`, every placeholder shows `yearTexts(activeRules)`. UI-06: with the made-up config, every placeholder shows that config's values
+- [x] Full gate passes and typecheck exits 0
 
 **Tests**: integration
 **Gate**: full
