@@ -351,6 +351,7 @@ T16
 **Done when**:
 
 - [ ] `tests/dom.test.js` adds one case that loads index.html with its real `<script type="module">` (jsdom + file resources, or a static import of the entry against a jsdom global) and types "100000" into serviços, which shows "OBRIGATÓRIA"
+- [ ] `tests/core/purity.test.js` LANG-01 scan list extended to `public/scripts/calculator.js`, `calculator-dom.js`, `presenter.js` and `accordion.js` (T10 scans only core + tests, because the legacy calculator.js stays pt-BR until this task)
 - [ ] Manual walk: `npx serve public`, type the spec values, compare against production calcmei.com.br
 - [ ] Build gate passes
 
@@ -472,8 +473,8 @@ Proof: `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md`
 
 ## Handoff
 
-**Settled mid-build:** Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
-**Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6
+**Settled mid-build:** LANG-01 scan grows with the files: T10 covers core + tests, and T15 adds the browser scripts once the legacy pt-BR calculator.js is replaced (orchestrator call). Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
+**Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6 - returned (d910c1a, 1910209, 238987f); batch 2 (Phase 2, T4-T10, Sonnet) at HEAD 238987f
 **Walked:** none
 
 ---
