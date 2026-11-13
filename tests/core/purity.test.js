@@ -15,9 +15,10 @@ const BROWSER_SCRIPTS = ['calculator.js', 'calculator-dom.js', 'presenter.js', '
  * Removes comments, string literals and regex literals from JS source, keeping the code
  * (including the code inside template literal expressions).
  * @param {string} source
+ * @param {string[] | null} [commentSink] Receives the text of every comment, when given.
  * @returns {string}
  */
-function stripLiteralsAndComments(source) {
+function stripLiteralsAndComments(source, commentSink = /** @type {string[] | null} */ (null)) {
 	let out = '';
 	let i = 0;
 
@@ -28,9 +29,12 @@ function stripLiteralsAndComments(source) {
 			const ch = source[i];
 			const next = source[i + 1];
 			if (ch === '/' && next === '/') {
+				const start = i;
 				while (i < source.length && source[i] !== '\n') i++;
+				commentSink?.push(source.slice(start + 2, i));
 			} else if (ch === '/' && next === '*') {
 				const end = source.indexOf('*/', i + 2);
+				commentSink?.push(source.slice(i + 2, end === -1 ? source.length : end));
 				i = end === -1 ? source.length : end + 2;
 			} else if (ch === "'" || ch === '"') {
 				i++;
@@ -117,11 +121,14 @@ function coreAndPresenterFiles() {
 	return files;
 }
 
-const DOM_REFERENCE = /\b(document|window|HTMLElement|navigator|localStorage|sessionStorage)\b/;
+const DOM_REFERENCE =
+	/\b(document|window|globalThis|self|location|navigator|localStorage|sessionStorage|fetch|XMLHttpRequest|HTMLElement|Element|Node|Event|CustomEvent|querySelector|querySelectorAll|getElementById|getElementsBy\w+|addEventListener|removeEventListener|dispatchEvent|innerHTML|innerText|outerHTML|textContent|classList|setAttribute|getAttribute|createElement|appendChild)\b/;
 
 // Portuguese domain words that must not appear in identifiers or file names.
 // "calcul(?!at)" keeps the English "calculate" legal.
-const PT_WORDS = /receita|lucro|despesa|regra|exercicio|calcul(?!at)|moeda|servico|comercio|transporte|resultado|apresent/i;
+// "limite(?!d)" keeps "limited", "conta(?!in|ct)" keeps "contains"/"contact".
+const PT_WORDS =
+	/receita|lucro|despesa|regra|exercicio|calcul(?!at)|moeda|servico|comercio|transporte|resultado|apresent|isent|isenc|limite(?!d)|tributav|declarac|valor|anocalend|rendiment|obrigat|atualiza|referencia|presunc|imposto|entrada|conta(?!in|ct)/i;
 
 /**
  * @param {string} code Source already stripped of strings and comments.
@@ -130,6 +137,26 @@ const PT_WORDS = /receita|lucro|despesa|regra|exercicio|calcul(?!at)|moeda|servi
 function portugueseIdentifiers(code) {
 	const identifiers = code.match(/[A-Za-z_$][\w$]*/g) ?? [];
 	return identifiers.filter((name) => PT_WORDS.test(name));
+}
+
+/**
+ * @param {string} text Free text (a comment or a test title). Quoted parts are user-facing text and skipped.
+ * @returns {string[]} Words that are Portuguese domain words or carry accented letters.
+ */
+function portugueseWords(text) {
+	const unquoted = text.replace(/"[^"]*"|'[^']*'|“[^”]*”|`[^`]*`/g, ' ');
+	const words = unquoted.match(/[^\s.,;:!?()[\]{}<>`'"*/\\|=+-]+/g) ?? [];
+	return words.filter((word) => PT_WORDS.test(word) || /[À-ÿ]/.test(word));
+}
+
+/**
+ * The titles of it/describe/test calls in a test file.
+ * @param {string} source
+ * @returns {string[]}
+ */
+function testTitles(source) {
+	const titles = [...source.matchAll(/\b(?:it|describe|test)\(\s*(['"`])((?:\\.|(?!\1).)*)\1/g)].map((m) => m[2]);
+	return titles;
 }
 
 /** @param {string} file */
@@ -156,12 +183,29 @@ describe('stripLiteralsAndComments', () => {
 	it('CALC-06 the DOM scan flags a planted document reference and ignores one in a string or comment', () => {
 		expect(DOM_REFERENCE.test(stripLiteralsAndComments('const t = document.title;'))).toBe(true);
 		expect(DOM_REFERENCE.test(stripLiteralsAndComments("const t = 'document'; // window"))).toBe(false);
+		for (const planted of ['doc.getElementById("x")', 'el.querySelector(".a")', 'globalThis.x = 1;', 'location.href', 'fetch(url)', 'el.textContent = s;']) {
+			expect(DOM_REFERENCE.test(stripLiteralsAndComments(planted)), planted).toBe(true);
+		}
 	});
 
 	it('LANG-01 the language scan flags a planted Portuguese identifier and accented character', () => {
 		expect(portugueseIdentifiers(stripLiteralsAndComments('const lucroApurado = 1;'))).toEqual(['lucroApurado']);
 		expect(portugueseIdentifiers(stripLiteralsAndComments('function calculateIrpf() {}'))).toEqual([]);
 		expect(/[^\x00-\x7f]/.test(stripLiteralsAndComments('const serviços = 1;'))).toBe(true);
+		for (const name of ['isentoTotal', 'limiteAnual', 'tributavel', 'declaracao', 'valorBruto', 'anoCalendario', 'rendimento']) {
+			expect(portugueseIdentifiers(stripLiteralsAndComments(`const ${name} = 1;`)), name).toEqual([name]);
+		}
+		expect(portugueseIdentifiers(stripLiteralsAndComments('const limited = contains + contact;'))).toEqual([]);
+	});
+
+	it('LANG-01 the comment and test-title scans flag Portuguese and ignore quoted user-facing text', () => {
+		/** @type {string[]} */
+		const comments = [];
+		stripLiteralsAndComments('const a = 1; // lucro apurado\n/* exercício */', comments);
+		expect(comments.flatMap(portugueseWords)).toEqual(['lucro', 'exercício']);
+		expect(testTitles("it('CALC-05 shows \"R$ 0,00\" when netProfit is negative', () => {})").flatMap(portugueseWords)).toEqual([]);
+		const plantedCall = 'i' + "t('mostra lucro negativo', () => {})"; // split so this file's own scan skips it
+		expect(testTitles(plantedCall).flatMap(portugueseWords)).toEqual(['lucro']);
 	});
 });
 
@@ -203,6 +247,25 @@ describe('English code', () => {
 	it('LANG-01 no Portuguese domain words in identifiers', () => {
 		const offenders = files.flatMap((file) =>
 			portugueseIdentifiers(stripLiteralsAndComments(fs.readFileSync(file, 'utf8'))).map((name) => `${relative(file)}: ${name}`)
+		);
+		expect(offenders).toEqual([]);
+	});
+
+	it('LANG-01 no Portuguese words or accents in comments', () => {
+		const offenders = files.flatMap((file) => {
+			/** @type {string[]} */
+			const comments = [];
+			stripLiteralsAndComments(fs.readFileSync(file, 'utf8'), comments);
+			return comments.flatMap(portugueseWords).map((word) => `${relative(file)}: ${word}`);
+		});
+		expect(offenders).toEqual([]);
+	});
+
+	it('LANG-01 no Portuguese words or accents in test titles outside quoted user-facing text', () => {
+		const testFiles = files.filter((file) => file.endsWith('.test.js'));
+		expect(testFiles.length).toBeGreaterThan(0);
+		const offenders = testFiles.flatMap((file) =>
+			testTitles(fs.readFileSync(file, 'utf8')).flatMap(portugueseWords).map((word) => `${relative(file)}: ${word}`)
 		);
 		expect(offenders).toEqual([]);
 	});

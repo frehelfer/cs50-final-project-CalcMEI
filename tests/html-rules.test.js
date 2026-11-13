@@ -9,8 +9,13 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const html = fs.readFileSync(path.join(ROOT, 'public/index.html'), 'utf8');
 const legacyHtml = fs.readFileSync(path.join(ROOT, 'tests/fixtures/index.legacy.html'), 'utf8');
 
-/** Yearly values that must only appear inside a placeholder. */
-const YEARLY_VALUES = ['35.584', '177.920', '800.000', '200.000', '40.000', '2025', '2026'];
+/** Yearly values that must only appear inside a placeholder: every rendered text, plus the bare numbers. */
+const YEARLY_VALUES = [
+	...new Set([
+		...Object.values(yearTexts(activeRules)),
+		'35.584', '177.920', '800.000', '200.000', '40.000', '2025', '2026', '2.312', '09/11/2026', '0,32', '0,08', '0,16', '32%', '16%',
+	]),
+];
 
 /** @param {string} source */
 function parse(source) {
@@ -61,6 +66,30 @@ describe('index.html placeholders', () => {
 			}
 		}
 		expect(offenders).toEqual([]);
+	});
+
+	it('UI-05 no head text or attribute outside a placeholder holds a yearly value', () => {
+		const head = parse(html);
+		/** @type {string[]} */
+		const offenders = [];
+		for (const value of YEARLY_VALUES) {
+			if ((head.head.textContent ?? '').includes(value)) offenders.push(`<head> text: ${value}`);
+		}
+		for (const element of head.querySelectorAll('*')) {
+			for (const attribute of element.attributes) {
+				if (attribute.name === 'href' && element.hasAttribute('data-rule-href')) continue;
+				for (const value of YEARLY_VALUES) {
+					if (attribute.value.includes(value)) offenders.push(`${element.tagName.toLowerCase()}[${attribute.name}]: ${value}`);
+				}
+			}
+		}
+		expect(offenders).toEqual([]);
+	});
+
+	it('UI-05 a bare rate, date or reference outside a placeholder is caught', () => {
+		for (const planted of ['32%', '0,32', '09/11/2026', 'IN RFB Nº 2.312/2026']) {
+			expect(YEARLY_VALUES.some((value) => planted.includes(value)), planted).toBe(true);
+		}
 	});
 
 	it('UI-05 the visible text is identical to the legacy page', () => {

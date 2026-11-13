@@ -17,6 +17,15 @@ function isObject(value) {
 }
 
 /**
+ * @param {Date} date
+ * @param {string} isoDay YYYY-MM-DD
+ * @returns {boolean} Whether date is a real day equal to isoDay (rejects 2026-02-30, 2026-13-01).
+ */
+function isSameDay(date, isoDay) {
+	return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === isoDay;
+}
+
+/**
  * @param {string} field
  * @param {string} problem
  * @returns {Error}
@@ -51,7 +60,7 @@ function requireObject(parent, path, key) {
 
 /**
  * Throws when a year config is malformed (missing or mistyped field, rate outside 0-1,
- * non-positive limit).
+ * non-positive limit, lastUpdated not an ISO date).
  * @param {unknown} rules
  * @returns {asserts rules is YearRules}
  */
@@ -62,11 +71,13 @@ export function validateRules(rules) {
 	const isString = (/** @type {unknown} */ v) => typeof v === 'string';
 	const isPositive = (/** @type {unknown} */ v) => isFiniteNumber(v) && v > 0;
 	const isRate = (/** @type {unknown} */ v) => isFiniteNumber(v) && v >= 0 && v <= 1;
+	const isIsoDate = (/** @type {unknown} */ v) =>
+		typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && isSameDay(new Date(`${v}T00:00:00Z`), v);
 
 	requireField(rules, '', 'fiscalYear', isNumber, 'a number');
 	requireField(rules, '', 'calendarYear', isNumber, 'a number');
 	requireField(rules, '', 'taxableIncomeLimit', isPositive, 'a positive number');
-	requireField(rules, '', 'lastUpdated', isString, 'a string');
+	requireField(rules, '', 'lastUpdated', isIsoDate, 'an ISO date (YYYY-MM-DD)');
 
 	const rates = requireObject(rules, '', 'presumedProfitRates');
 	for (const key of ['services', 'commerce', 'transport']) {

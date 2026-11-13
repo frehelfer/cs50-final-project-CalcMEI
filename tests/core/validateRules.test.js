@@ -54,6 +54,20 @@ describe('validateRules', () => {
 	});
 
 	it('RULES-04 a non-object config throws', () => {
-		expect(() => validateRules(null)).toThrow(/rules/);
+		expect(() => validateRules(null)).toThrow(/^invalid rules: rules must be an object$/);
+		expect(() => validateRules('2026')).toThrow(/^invalid rules: rules must be an object$/);
+	});
+});
+
+describe('validateRules lastUpdated', () => {
+	for (const bad of ['09/11/2026', '2026-11-9', '2026-13-01', '2026-02-30', '']) {
+		it(`RULES-08 lastUpdated "${bad}" throws naming lastUpdated`, () => {
+			const config = { ...validConfig(), lastUpdated: bad };
+			expect(() => validateRules(config)).toThrow(/^invalid rules: lastUpdated must be an ISO date \(YYYY-MM-DD\)$/);
+		});
+	}
+
+	it('RULES-08 an ISO lastUpdated such as 2026-11-09 passes', () => {
+		expect(() => validateRules({ ...validConfig(), lastUpdated: '2026-11-09' })).not.toThrow();
 	});
 });

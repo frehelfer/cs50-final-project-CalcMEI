@@ -57,7 +57,7 @@ describe('presentResult', () => {
 		expect(result.resultHtml).toBe(NO_DECLARE_HTML.replace('R$ 35.584,00', 'R$ 40.000,00'));
 	});
 
-	it('CALC-05 expenses above revenue → boxes "R$ 0,00" and conta "-4.000"', () => {
+	it('CALC-05 expenses above revenue → boxes "R$ 0,00" and breakdown "#conta-lucro-apurado" "-4.000"', () => {
 		const result = view({ services: 1000, expenses: 5000 });
 		expect(result.texts['lucro-apurado']).toBe('R$ 0,00');
 		expect(result.texts['lucro-tributável']).toBe('R$ 0,00');
@@ -81,7 +81,7 @@ describe('presentResult', () => {
 		expect(result.title.text).toBe('Não Obrigatória');
 	});
 
-	it('UI-07 returns every result box and conta text as plain data keyed by element id', () => {
+	it('UI-07 returns every result box and breakdown ("#conta-*") text as plain data keyed by element id', () => {
 		const result = view({ services: 100000, commerce: 20000, transport: 10000, expenses: 5000 });
 		expect(result.texts).toEqual({
 			'receita-bruta-apurado': `R$${NBSP}130.000,00`,

@@ -88,6 +88,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 5. The test suite SHALL validate every year config in the repo  <!-- RULES-05 -->
 6. The 2026 config SHALL hold limit 35584, rates 0,32 / 0,08 / 0,16, ano-calendário 2025, exercício 2026, last-update date 09/11/2026 and reference "IN RFB Nº 2.312/2026" with today's URL  <!-- RULES-06 -->
 7. The year config SHALL hold the "outras obrigações" limits shown in index.html, with 2026 values: rendimentos isentos 200000, operações em bolsa 40000, receita bruta rural 177920, bens 800000  <!-- RULES-07 -->
+8. IF a year config's lastUpdated is not a real date written YYYY-MM-DD THEN the validator SHALL throw "invalid rules: lastUpdated must be an ISO date (YYYY-MM-DD)"  <!-- RULES-08, added from verification finding 5 -->
 
 **Independent Test**: Run the core tests against a made-up year config and watch the results change.
 
@@ -186,6 +187,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | RULES-05 | P1: Rules per year | Design | Pending |
 | RULES-06 | P1: Rules per year | Design | Pending |
 | RULES-07 | P1: Rules per year | Design | Pending |
+| RULES-08 | P1: Rules per year | Verification | Implementing |
 | UI-01 | P1: Page unchanged | Design | Implementing |
 | UI-02 | P1: Page unchanged | Design | Implementing |
 | UI-03 | P1: Page unchanged | Design | Implementing |
@@ -201,7 +203,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | LANG-01 | P2: Code in English | Design | Implementing |
 | LANG-02 | P2: Code in English | Design | Implementing |
 
-**Coverage:** 29 total, 0 mapped to tasks, 29 unmapped ⚠️ (mapped in Tasks)
+**Coverage:** 30 total, 0 mapped to tasks, 29 unmapped ⚠️ (mapped in Tasks)
 
 ---
 

@@ -3,7 +3,7 @@
  */
 
 /**
- * Rules of one fiscal year (exercicio), kept as data.
+ * Rules of one fiscal year, kept as data.
  * @typedef {object} YearRules
  * @property {number} fiscalYear Fiscal year (e.g. 2026).
  * @property {number} calendarYear Calendar year the income refers to (e.g. 2025).

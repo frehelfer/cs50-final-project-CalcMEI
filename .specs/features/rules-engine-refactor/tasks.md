@@ -466,6 +466,9 @@ Proof: `grep -q "npm test" CLAUDE.md && grep -q "npm run typecheck" CLAUDE.md`
 **C28** - JS identifiers, file names and test titles are English, with no accents and no pt domain words outside strings (LANG-01, AC 1)
 Proof: run unit | ✓ LANG-01
 
+**C30** - lastUpdated that is not a real YYYY-MM-DD date throws naming lastUpdated (RULES-08, AC 8)
+Proof: run unit | ✓ RULES-08
+
 **C29** - CLAUDE.md states the English-code rule and has the pt-BR ↔ EN glossary (LANG-02, AC 2)
 Proof: `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md`
 
