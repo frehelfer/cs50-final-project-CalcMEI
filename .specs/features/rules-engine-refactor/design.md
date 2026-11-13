@@ -88,7 +88,7 @@ On load: `yearTexts(rules)` → fill every `[data-rule]`.
   - `formatBRL(n: number): string`. Intl currency, as the result boxes do today.
   - `formatNumber(n: number): string`. Intl plain pt-BR, as the `#conta-*` spans do today.
   - `formatLimit(n: number): string`. `formatBRL` with NBSP replaced by a regular space, matching the hand-typed `"R$ 35.584,00"` in today's HTML and result text.
-  - `formatRate(t: number): {percentual: string, decimal: string}`. 0.32 → `"32%"` and `"0,32"`.
+  - `formatRate(t: number): {percent: string, decimal: string}`. 0.32 → `"32%"` and `"0,32"`.
 
 ### `core/calculate.js`
 - **Purpose**: The IRPF rules (CALC-01..05, RULES-03).

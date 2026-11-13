@@ -11,7 +11,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 **Design**: `.specs/features/rules-engine-refactor/design.md`
 **Status**: Approved
 **Approved**: 2026-11-13 - user: "approved, create the branch and commit, then wait"
-**Build**: none - the typecheck and test tooling is created by Phase 1 (T2/T3); restored to `npm run typecheck; npx vitest run` before batch 2
+**Build**: `npm run typecheck; npx vitest run`
 **Run unit**: `npx vitest run --reporter=verbose`
 
 ---
@@ -473,8 +473,8 @@ Proof: `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md`
 
 ## Handoff
 
-**Settled mid-build:** LANG-01 scan grows with the files: T10 covers core + tests, and T15 adds the browser scripts once the legacy pt-BR calculator.js is replaced (orchestrator call). Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
-**Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6 - returned (d910c1a, 1910209, 238987f); batch 2 (Phase 2, T4-T10, Sonnet) at HEAD 238987f
+**Settled mid-build:** The lockfile was regenerated (393260d) because npm dropped rolldown's platform bindings and vitest failed on a clean `npm ci`. firebase and webpack were kept at 9.9.3/5.74.0 (orchestrator call). Batch 2 named `formatRate` → `{percent, decimal}` and fixed `RuleKey` to 16 keys in core/types.js (design discretion). The Build line was restored after batch 2. LANG-01 scan grows with the files: T10 covers core + tests, and T15 adds the browser scripts once the legacy pt-BR calculator.js is replaced (orchestrator call). Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
+**Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6 - returned (d910c1a, 1910209, 238987f); batch 2 (Phase 2, T4-T10, Sonnet) at HEAD 238987f - returned (bf5f3db..f78d61d, 44 tests); batch 3 (Phases 3-4, T11-T16, Opus) at HEAD 393260d
 **Walked:** none
 
 ---
