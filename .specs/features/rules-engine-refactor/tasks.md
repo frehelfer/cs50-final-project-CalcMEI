@@ -120,7 +120,7 @@ T16
 
 **Done when**:
 
-- [ ] `npx tsc -p tsconfig.json --showConfig` prints the settings above (tsc errors with "No inputs" until T4 adds the first file, so the full typecheck gate starts at T4)
+- [x] `npx tsc -p tsconfig.json --showConfig` prints the settings above (tsc errors with "No inputs" until T4 adds the first file, so the full typecheck gate starts at T4)
 
 **Tests**: none
 **Gate**: config
