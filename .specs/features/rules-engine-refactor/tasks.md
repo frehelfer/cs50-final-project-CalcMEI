@@ -175,8 +175,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/core/validateRules.test.js` has one failing-config case per rule (missing field, rate 1.5, rate −0.1, limit 0, missing otherObligations.assets), each asserting that the field name appears in the message, plus one valid config that passes
-- [ ] Quick gate passes
+- [x] `tests/core/validateRules.test.js` has one failing-config case per rule (missing field, rate 1.5, rate −0.1, limit 0, missing otherObligations.assets), each asserting that the field name appears in the message, plus one valid config that passes
+- [x] Quick gate passes
 
 **Tests**: unit
 **Gate**: quick
