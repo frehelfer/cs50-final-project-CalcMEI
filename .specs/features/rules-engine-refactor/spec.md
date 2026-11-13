@@ -203,7 +203,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | LANG-01 | P2: Code in English | Execute | Verified |
 | LANG-02 | P2: Code in English | Execute | Verified |
 
-**Coverage:** 30 total, 0 mapped to tasks, 29 unmapped ⚠️ (mapped in Tasks)
+**Coverage:** 30 total, 30 mapped to tasks and checks, 0 unmapped
 
 ---
 
