@@ -1,9 +1,9 @@
 # rules-engine-refactor proofs
 
-**HEAD**: e7c3b56
+**HEAD**: dabbca4
 **Tree**: clean
 **Shell**: /bin/sh
-**Result**: 31 pass, 0 fail
+**Result**: 32 pass, 0 fail
 
 | Check | Proof | Result |
 | --- | --- | --- |
@@ -35,6 +35,7 @@
 | C26 | `grep -q "ACTIVE_FISCAL_YEAR" CLAUDE.md && ! grep -q 'grep -rn "35.584' CLAUDE.md` | pass |
 | C27 | `grep -q "npm test" CLAUDE.md && grep -q "npm run typecheck" CLAUDE.md` | pass |
 | C28 | `run unit / ✓ LANG-01` | pass |
+| C30 | `run unit / ✓ RULES-08` | pass |
 | C29 | `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md` | pass |
 | Build | `npm run typecheck` | pass |
 | Build | `npx vitest run` | pass |
@@ -44,21 +45,21 @@
 `Run unit` - exit 0
 
 ```
- ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the visible text is identical to the legacy page 13ms
+ ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the visible text is identical to the legacy page 10ms
  ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the body markup is the legacy markup once the placeholder spans and attributes are removed 25ms
  ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the calculator is loaded as an ES module 1ms
- ✓ tests/dom.test.js > DOM adapter golden master > UI-01 typing gives the same text, classes, result HTML and masked inputs as the legacy script 991ms
- ✓ tests/dom.test.js > DOM adapter golden master > UI-01 the legacy reference itself shows the spec values for services 100,000.00 14ms
- ✓ tests/dom.test.js > DOM adapter golden master > UI-07 the adapter writes exactly the presenter view 12ms
- ✓ tests/dom.test.js > DOM adapter placeholders > UI-04 on load every placeholder shows the active config text 12ms
+ ✓ tests/dom.test.js > DOM adapter golden master > UI-01 typing gives the same text, classes, result HTML and masked inputs as the legacy script 920ms
+ ✓ tests/dom.test.js > DOM adapter golden master > UI-01 the legacy reference itself shows the spec values for services 100,000.00 13ms
+ ✓ tests/dom.test.js > DOM adapter golden master > UI-07 the adapter writes exactly the presenter view 11ms
+ ✓ tests/dom.test.js > DOM adapter placeholders > UI-04 on load every placeholder shows the active config text 11ms
  ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 with a different year config every placeholder shows that config 12ms
- ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 typing under a different year config uses its limit and rates 12ms
+ ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 typing under a different year config uses its limit and rates 13ms
  ✓ tests/dom.test.js > calculator.js entry > UI-01 loading the module entry on index.html wires the page: services 100,000.00 shows "OBRIGATÓRIA" 21ms
 
  Test Files  8 passed (8)
-      Tests  69 passed (69)
-   Start at  16:15:12
-   Duration  1.59s (tests 55%, import 23%, environment 18%, transform 3%, worker 1%)
+      Tests  80 passed (80)
+   Start at  16:19:39
+   Duration  1.75s (tests 44%, import 28%, environment 24%, transform 2%, worker 1%)
 ```
 
 `npm run typecheck` - exit 0
