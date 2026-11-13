@@ -138,7 +138,7 @@ T16
 
 **Done when**:
 
-- [ ] `npm run typecheck` exits 0
+- [x] `npm run typecheck` exits 0
 
 **Tests**: none
 **Gate**: build
