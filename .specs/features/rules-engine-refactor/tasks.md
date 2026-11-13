@@ -272,8 +272,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/presenter.test.js` covers obrigatória/não (title, class, HTML text containing "R$ 35.584,00"), the negative apurado clamp and its "-4.000" conta, tributável ≤ 0 → "R$ 0,00", and a 40000-limit config whose text shows "R$ 40.000,00"
-- [ ] Quick gate passes and typecheck exits 0
+- [x] `tests/presenter.test.js` covers obrigatória/não (title, class, HTML text containing "R$ 35.584,00"), the negative apurado clamp and its "-4.000" conta, tributável ≤ 0 → "R$ 0,00", and a 40000-limit config whose text shows "R$ 40.000,00"
+- [x] Quick gate passes and typecheck exits 0
 
 **Tests**: unit
 **Gate**: quick

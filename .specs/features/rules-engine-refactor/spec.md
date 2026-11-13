@@ -175,7 +175,7 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | CALC-02 | P1: Tested core | Design | Pending |
 | CALC-03 | P1: Tested core | Design | Pending |
 | CALC-04 | P1: Tested core | Design | Pending |
-| CALC-05 | P1: Tested core | Design | Pending |
+| CALC-05 | P1: Tested core | Design | Implementing |
 | CALC-06 | P1: Tested core | Design | Pending |
 | CALC-07 | P1: Tested core | Design | Pending |
 | CALC-08 | P1: Tested core | Design | Pending |
@@ -187,12 +187,12 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | RULES-06 | P1: Rules per year | Design | Pending |
 | RULES-07 | P1: Rules per year | Design | Pending |
 | UI-01 | P1: Page unchanged | Design | Pending |
-| UI-02 | P1: Page unchanged | Design | Pending |
-| UI-03 | P1: Page unchanged | Design | Pending |
+| UI-02 | P1: Page unchanged | Design | Implementing |
+| UI-03 | P1: Page unchanged | Design | Implementing |
 | UI-04 | P1: Page unchanged | Design | Pending |
 | UI-05 | P1: Page unchanged | Design | Pending |
 | UI-06 | P1: Page unchanged | Design | Pending |
-| UI-07 | P1: Page unchanged | Design | Pending |
+| UI-07 | P1: Page unchanged | Design | Implementing |
 | TS-01 | P2: TS ready | Design | Pending |
 | TS-02 | P2: TS ready | Design | Pending |
 | TS-03 | P2: TS ready | Design | Pending |
