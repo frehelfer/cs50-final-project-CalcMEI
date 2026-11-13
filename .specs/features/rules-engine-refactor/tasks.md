@@ -101,8 +101,8 @@ T16
 
 **Done when**:
 
-- [ ] `npm install` succeeds and `npx vitest --version` runs
-- [ ] The webpack `build` script is unchanged
+- [x] `npm install` succeeds and `npx vitest --version` runs
+- [x] The webpack `build` script is unchanged
 
 **Tests**: none
 **Gate**: repo
