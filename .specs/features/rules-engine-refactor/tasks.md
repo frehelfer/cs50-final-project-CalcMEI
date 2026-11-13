@@ -251,10 +251,10 @@ T16
 
 **Done when**:
 
-- [ ] The same test strips string literals and comments from every `public/scripts/**/*.js` and `tests/**/*.js` file (except `tests/fixtures/`), and asserts there are no non-ASCII characters and none of the pt words `receita|lucro|despesa|regra|exercicio|calcul|moeda|serviço|comercio|transporte|resultado|apresent` in identifiers
+- [x] The same test strips string literals and comments from every `public/scripts/**/*.js` and `tests/**/*.js` file (except `tests/fixtures/`), and asserts there are no non-ASCII characters and none of the pt words `receita|lucro|despesa|regra|exercicio|calcul|moeda|serviço|comercio|transporte|resultado|apresent` in identifiers
 
-- [ ] Test fails when a `document.` reference is planted (checked once by hand, then reverted)
-- [ ] Quick gate passes
+- [x] Test fails when a `document.` reference is planted (checked once by hand, then reverted)
+- [x] Quick gate passes
 
 **Tests**: unit
 **Gate**: quick
