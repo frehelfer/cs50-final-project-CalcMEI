@@ -1,7 +1,7 @@
 # rules-engine-refactor proofs
 
-**HEAD**: cdb47b0
-**Tree**: dirty - .agents/, .claude/, .idea/
+**HEAD**: e7c3b56
+**Tree**: clean
 **Shell**: /bin/sh
 **Result**: 31 pass, 0 fail
 
@@ -44,21 +44,21 @@
 `Run unit` - exit 0
 
 ```
- ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the visible text is identical to the legacy page 16ms
- ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the body markup is the legacy markup once the placeholder spans and attributes are removed 32ms
+ ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the visible text is identical to the legacy page 13ms
+ ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the body markup is the legacy markup once the placeholder spans and attributes are removed 25ms
  ✓ tests/html-rules.test.js > index.html placeholders > UI-05 the calculator is loaded as an ES module 1ms
- ✓ tests/dom.test.js > DOM adapter golden master > UI-01 typing gives the same text, classes, result HTML and masked inputs as the legacy script 969ms
+ ✓ tests/dom.test.js > DOM adapter golden master > UI-01 typing gives the same text, classes, result HTML and masked inputs as the legacy script 991ms
  ✓ tests/dom.test.js > DOM adapter golden master > UI-01 the legacy reference itself shows the spec values for services 100,000.00 14ms
- ✓ tests/dom.test.js > DOM adapter golden master > UI-07 the adapter writes exactly the presenter view 11ms
- ✓ tests/dom.test.js > DOM adapter placeholders > UI-04 on load every placeholder shows the active config text 15ms
- ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 with a different year config every placeholder shows that config 15ms
- ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 typing under a different year config uses its limit and rates 15ms
- ✓ tests/dom.test.js > calculator.js entry > UI-01 loading the module entry on index.html wires the page: services 100,000.00 shows "OBRIGATÓRIA" 22ms
+ ✓ tests/dom.test.js > DOM adapter golden master > UI-07 the adapter writes exactly the presenter view 12ms
+ ✓ tests/dom.test.js > DOM adapter placeholders > UI-04 on load every placeholder shows the active config text 12ms
+ ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 with a different year config every placeholder shows that config 12ms
+ ✓ tests/dom.test.js > DOM adapter placeholders > UI-06 typing under a different year config uses its limit and rates 12ms
+ ✓ tests/dom.test.js > calculator.js entry > UI-01 loading the module entry on index.html wires the page: services 100,000.00 shows "OBRIGATÓRIA" 21ms
 
  Test Files  8 passed (8)
       Tests  69 passed (69)
-   Start at  16:14:44
-   Duration  1.78s (tests 46%, import 27%, environment 23%, transform 3%, worker 1%)
+   Start at  16:15:12
+   Duration  1.59s (tests 55%, import 23%, environment 18%, transform 3%, worker 1%)
 ```
 
 `npm run typecheck` - exit 0
