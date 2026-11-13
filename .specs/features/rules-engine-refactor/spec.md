@@ -172,36 +172,36 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| CALC-01 | P1: Tested core | Design | Pending |
-| CALC-02 | P1: Tested core | Design | Pending |
-| CALC-03 | P1: Tested core | Design | Pending |
-| CALC-04 | P1: Tested core | Design | Pending |
-| CALC-05 | P1: Tested core | Design | Implementing |
-| CALC-06 | P1: Tested core | Design | Pending |
-| CALC-07 | P1: Tested core | Design | Pending |
-| CALC-08 | P1: Tested core | Design | Pending |
-| RULES-01 | P1: Rules per year | Design | Pending |
-| RULES-02 | P1: Rules per year | Design | Pending |
-| RULES-03 | P1: Rules per year | Design | Pending |
-| RULES-04 | P1: Rules per year | Design | Pending |
-| RULES-05 | P1: Rules per year | Design | Pending |
-| RULES-06 | P1: Rules per year | Design | Pending |
-| RULES-07 | P1: Rules per year | Design | Pending |
-| RULES-08 | P1: Rules per year | Verification | Implementing |
-| UI-01 | P1: Page unchanged | Design | Implementing |
-| UI-02 | P1: Page unchanged | Design | Implementing |
-| UI-03 | P1: Page unchanged | Design | Implementing |
-| UI-04 | P1: Page unchanged | Design | Implementing |
-| UI-05 | P1: Page unchanged | Design | Implementing |
-| UI-06 | P1: Page unchanged | Design | Implementing |
-| UI-07 | P1: Page unchanged | Design | Implementing |
-| TS-01 | P2: TS ready | Design | Pending |
-| TS-02 | P2: TS ready | Design | Pending |
-| TS-03 | P2: TS ready | Design | Pending |
-| DOC-01 | P2: Docs | Design | Implementing |
-| DOC-02 | P2: Docs | Design | Implementing |
-| LANG-01 | P2: Code in English | Design | Implementing |
-| LANG-02 | P2: Code in English | Design | Implementing |
+| CALC-01 | P1: Tested core | Execute | Verified |
+| CALC-02 | P1: Tested core | Execute | Verified |
+| CALC-03 | P1: Tested core | Execute | Verified |
+| CALC-04 | P1: Tested core | Execute | Verified |
+| CALC-05 | P1: Tested core | Execute | Verified |
+| CALC-06 | P1: Tested core | Execute | Verified |
+| CALC-07 | P1: Tested core | Execute | Verified |
+| CALC-08 | P1: Tested core | Execute | Verified |
+| RULES-01 | P1: Rules per year | Execute | Verified |
+| RULES-02 | P1: Rules per year | Execute | Verified |
+| RULES-03 | P1: Rules per year | Execute | Verified |
+| RULES-04 | P1: Rules per year | Execute | Verified |
+| RULES-05 | P1: Rules per year | Execute | Verified |
+| RULES-06 | P1: Rules per year | Execute | Verified |
+| RULES-07 | P1: Rules per year | Execute | Verified |
+| RULES-08 | P1: Rules per year | Execute | Verified |
+| UI-01 | P1: Page unchanged | Execute | Verified |
+| UI-02 | P1: Page unchanged | Execute | Verified |
+| UI-03 | P1: Page unchanged | Execute | Verified |
+| UI-04 | P1: Page unchanged | Execute | Verified |
+| UI-05 | P1: Page unchanged | Execute | Verified |
+| UI-06 | P1: Page unchanged | Execute | Verified |
+| UI-07 | P1: Page unchanged | Execute | Verified |
+| TS-01 | P2: TS ready | Execute | Verified |
+| TS-02 | P2: TS ready | Execute | Verified |
+| TS-03 | P2: TS ready | Execute | Verified |
+| DOC-01 | P2: Docs | Execute | Verified |
+| DOC-02 | P2: Docs | Execute | Verified |
+| LANG-01 | P2: Code in English | Execute | Verified |
+| LANG-02 | P2: Code in English | Execute | Verified |
 
 **Coverage:** 30 total, 0 mapped to tasks, 29 unmapped ⚠️ (mapped in Tasks)
 
