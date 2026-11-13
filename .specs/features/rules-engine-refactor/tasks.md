@@ -213,8 +213,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/core/rules.test.js` asserts `activeRules === rulesByFiscalYear[ACTIVE_FISCAL_YEAR]`, that each key equals its config's `fiscalYear`, and runs `validateRules` over every entry
-- [ ] Quick gate passes
+- [x] `tests/core/rules.test.js` asserts `activeRules === rulesByFiscalYear[ACTIVE_FISCAL_YEAR]`, that each key equals its config's `fiscalYear`, and runs `validateRules` over every entry
+- [x] Quick gate passes
 
 **Tests**: unit
 **Gate**: quick

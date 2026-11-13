@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { rules2026 } from '../../public/scripts/core/rules/2026.js';
+import { rulesByFiscalYear, ACTIVE_FISCAL_YEAR, activeRules } from '../../public/scripts/core/rules/index.js';
 import { validateRules } from '../../public/scripts/core/validateRules.js';
 
 describe('rules2026', () => {
@@ -37,5 +38,26 @@ describe('rules2026', () => {
 			ruralRevenue: 177920,
 			assets: 800000,
 		});
+	});
+});
+
+describe('rules index', () => {
+	it('RULES-02 activeRules is the config picked by ACTIVE_FISCAL_YEAR', () => {
+		expect(activeRules).toBe(rulesByFiscalYear[ACTIVE_FISCAL_YEAR]);
+		expect(activeRules.fiscalYear).toBe(ACTIVE_FISCAL_YEAR);
+	});
+
+	it('RULES-02 each key of rulesByFiscalYear equals its config fiscalYear', () => {
+		for (const [key, rules] of Object.entries(rulesByFiscalYear)) {
+			expect(rules.fiscalYear).toBe(Number(key));
+		}
+	});
+
+	it('RULES-05 every year config in the repo passes validation', () => {
+		const entries = Object.values(rulesByFiscalYear);
+		expect(entries.length).toBeGreaterThan(0);
+		for (const rules of entries) {
+			expect(() => validateRules(rules)).not.toThrow();
+		}
 	});
 });
