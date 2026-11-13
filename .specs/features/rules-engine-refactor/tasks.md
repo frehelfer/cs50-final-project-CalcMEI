@@ -11,7 +11,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 **Design**: `.specs/features/rules-engine-refactor/design.md`
 **Status**: Approved
 **Approved**: 2026-11-13 - user: "approved, create the branch and commit, then wait"
-**Build**: `npm run typecheck; npx vitest run`
+**Build**: none - the typecheck and test tooling is created by Phase 1 (T2/T3); restored to `npm run typecheck; npx vitest run` before batch 2
 **Run unit**: `npx vitest run --reporter=verbose`
 
 ---
@@ -472,8 +472,8 @@ Proof: `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md`
 
 ## Handoff
 
-**Settled mid-build:** none
-**Dispatched:** none
+**Settled mid-build:** Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
+**Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6
 **Walked:** none
 
 ---
