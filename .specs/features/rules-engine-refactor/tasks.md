@@ -156,8 +156,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/core/currency.test.js` covers "R$ 1.234,56" → 1234.56, "" → 0, letters ignored, "12345" → "R$ 123,45", 999.999.999,99 formatted, `formatLimit(35584)` = "R$ 35.584,00" with a regular space, `formatRate(0.32)` = 32% / 0,32
-- [ ] Quick gate passes and typecheck exits 0
+- [x] `tests/core/currency.test.js` covers "R$ 1.234,56" → 1234.56, "" → 0, letters ignored, "12345" → "R$ 123,45", 999.999.999,99 formatted, `formatLimit(35584)` = "R$ 35.584,00" with a regular space, `formatRate(0.32)` = 32% / 0,32
+- [x] Quick gate passes and typecheck exits 0
 
 **Tests**: unit
 **Gate**: quick
