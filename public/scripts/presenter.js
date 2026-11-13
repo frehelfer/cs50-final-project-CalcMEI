@@ -1,8 +1,9 @@
-import { formatBRL, formatNumber, formatLimit } from './core/currency.js';
+import { formatBRL, formatNumber, formatLimit, formatRate } from './core/currency.js';
 
 /** @typedef {import('./core/types.js').Result} Result */
 /** @typedef {import('./core/types.js').YearRules} YearRules */
 /** @typedef {import('./core/types.js').ResultView} ResultView */
+/** @typedef {import('./core/types.js').RuleKey} RuleKey */
 
 /** Shown in a result box when its value is not positive (regular space, as the legacy script wrote it). */
 const ZERO_BRL = 'R$ 0,00';
@@ -55,5 +56,38 @@ export function presentResult(result, rules) {
 			'Se você recebeu outros valores como Pessoa Física e a soma desses valores com o\n\t\t\t\t' +
 			`Rendimento Tributável ficou maior que ${limit}, será necessário realizar o IRPF.\n\t\t\t\t` +
 			'Acompanhe abaixo mais informações.',
+	};
+}
+
+/**
+ * Renders every year-dependent placeholder of the page from a year config.
+ * @param {YearRules} rules
+ * @returns {Record<RuleKey, string>}
+ */
+export function yearTexts(rules) {
+	const [year, month, day] = rules.lastUpdated.split('-');
+	const rates = rules.presumedProfitRates;
+	const services = formatRate(rates.services);
+	const commerce = formatRate(rates.commerce);
+	const transport = formatRate(rates.transport);
+	const other = rules.otherObligations;
+
+	return {
+		calendarYear: String(rules.calendarYear),
+		fiscalYear: String(rules.fiscalYear),
+		lastUpdated: `${day}/${month}/${year}`,
+		legalReferenceName: rules.legalReference.name,
+		legalReferenceUrl: rules.legalReference.url,
+		limit: formatLimit(rules.taxableIncomeLimit),
+		servicesRatePercent: services.percent,
+		servicesRateDecimal: services.decimal,
+		commerceRatePercent: commerce.percent,
+		commerceRateDecimal: commerce.decimal,
+		transportRatePercent: transport.percent,
+		transportRateDecimal: transport.decimal,
+		exemptIncomeLimit: formatLimit(other.exemptIncome),
+		stockTradingLimit: formatLimit(other.stockTrading),
+		ruralRevenueLimit: formatLimit(other.ruralRevenue),
+		assetsLimit: formatLimit(other.assets),
 	};
 }

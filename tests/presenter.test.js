@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { presentResult } from '../public/scripts/presenter.js';
+import { presentResult, yearTexts } from '../public/scripts/presenter.js';
 import { calculateIrpf } from '../public/scripts/core/calculate.js';
 import { rules2026 } from '../public/scripts/core/rules/2026.js';
 
@@ -99,5 +99,46 @@ describe('presentResult', () => {
 			'lucro-tributável': `R$${NBSP}89.800,00`,
 			'conta-lucro-apurado': '125.000',
 		});
+	});
+});
+
+describe('yearTexts', () => {
+	it('UI-04 renders every 2026 placeholder as today\'s index.html shows it', () => {
+		expect(yearTexts(rules2026)).toEqual({
+			calendarYear: '2025',
+			fiscalYear: '2026',
+			lastUpdated: '09/11/2026',
+			legalReferenceName: 'IN RFB Nº 2.312/2026',
+			legalReferenceUrl:
+				'https://www.in.gov.br/web/dou/-/instrucao-normativa-rfb-n-2.312-de-13-de-marco-de-2026-692748727',
+			limit: 'R$ 35.584,00',
+			servicesRatePercent: '32%',
+			servicesRateDecimal: '0,32',
+			commerceRatePercent: '8%',
+			commerceRateDecimal: '0,08',
+			transportRatePercent: '16%',
+			transportRateDecimal: '0,16',
+			exemptIncomeLimit: 'R$ 200.000,00',
+			stockTradingLimit: 'R$ 40.000,00',
+			ruralRevenueLimit: 'R$ 177.920,00',
+			assetsLimit: 'R$ 800.000,00',
+		});
+	});
+
+	it('UI-04 a made-up config changes the rendered keys', () => {
+		const texts = yearTexts({
+			...rules2026,
+			fiscalYear: 2099,
+			calendarYear: 2098,
+			lastUpdated: '2099-01-31',
+			taxableIncomeLimit: 40000,
+			presumedProfitRates: { services: 0.5, commerce: 0.08, transport: 0.16 },
+		});
+		expect(texts.fiscalYear).toBe('2099');
+		expect(texts.calendarYear).toBe('2098');
+		expect(texts.lastUpdated).toBe('31/01/2099');
+		expect(texts.limit).toBe('R$ 40.000,00');
+		expect(texts.servicesRatePercent).toBe('50%');
+		expect(texts.servicesRateDecimal).toBe('0,5');
 	});
 });

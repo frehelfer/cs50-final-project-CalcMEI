@@ -291,8 +291,8 @@ T16
 
 **Done when**:
 
-- [ ] `tests/presenter.test.js` asserts every key for `rules2026` against the strings in today's index.html, plus one key changed under a made-up config
-- [ ] Quick gate passes
+- [x] `tests/presenter.test.js` asserts every key for `rules2026` against the strings in today's index.html, plus one key changed under a made-up config
+- [x] Quick gate passes
 
 **Tests**: unit
 **Gate**: quick
