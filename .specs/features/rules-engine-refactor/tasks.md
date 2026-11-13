@@ -82,8 +82,8 @@ T16
 
 **Done when**:
 
-- [ ] `git ls-files node_modules` prints nothing
-- [ ] `public/` deploy content unchanged
+- [x] `git ls-files node_modules` prints nothing
+- [x] `public/` deploy content unchanged
 
 **Tests**: none
 **Gate**: repo
