@@ -371,8 +371,8 @@ T16
 
 **Done when**:
 
-- [ ] CLAUDE.md is in English, describes the new flow and the language rule, and includes the glossary. No instruction to grep for the limit remains
-- [ ] Build gate passes
+- [x] CLAUDE.md is in English, describes the new flow and the language rule, and includes the glossary. No instruction to grep for the limit remains
+- [x] Build gate passes
 
 **Tests**: none
 **Gate**: build

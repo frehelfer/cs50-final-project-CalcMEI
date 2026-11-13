@@ -196,10 +196,10 @@ All of the calculator's logic sits in one `input` handler in `public/scripts/cal
 | TS-01 | P2: TS ready | Design | Pending |
 | TS-02 | P2: TS ready | Design | Pending |
 | TS-03 | P2: TS ready | Design | Pending |
-| DOC-01 | P2: Docs | Design | Pending |
-| DOC-02 | P2: Docs | Design | Pending |
+| DOC-01 | P2: Docs | Design | Implementing |
+| DOC-02 | P2: Docs | Design | Implementing |
 | LANG-01 | P2: Code in English | Design | Implementing |
-| LANG-02 | P2: Code in English | Design | Pending |
+| LANG-02 | P2: Code in English | Design | Implementing |
 
 **Coverage:** 29 total, 0 mapped to tasks, 29 unmapped ⚠️ (mapped in Tasks)
 
