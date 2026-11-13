@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="É MEI e não sabe se precisa declarar o Imposto de Renda Pessoa Física? Acesse agora e fique tranquilo com sua Contabilidade. Calculadora IRPF - MEI. Microempreendedor Individual."
+		/>
+		<meta name="google-adsense-account" content="ca-pub-9442959543814157">
+		<title>Calculadora IRPF - MEI</title>
+		<!-- Fonts  -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="bundle.js" defer></script>
+		<!-- Styles  -->
+		<link rel="stylesheet" href="/styles/base.css" />
+		<link rel="stylesheet" href="/styles/calculator.css" />
+
+		<script src="/scripts/calculator.js" defer></script>
+		<script src="/scripts/accordion.js" defer></script>
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+	</head>
+	<body>
+		<header>
+			<nav class="navbar">
+				<div class="navbar-container">
+					<a class="navbar-item" href="/index.html">
+						<img
+							src="/images/Circle-icons-calculator.svg"
+							alt=""
+							width="30"
+							height="24"
+							class="d-inline-block align-text-top"
+						/>
+						<p>calcMEI</p>
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<div class="border">
+				<h1>Calculadora Declaração IRPF - MEI</h1>
+				<p>Ano-Calendário de 2025 - Exercício de 2026</p>
+				<h6>
+					Última atualização em 09/11/2026 |
+					<a
+						target="_blank"
+						href="https://www.in.gov.br/web/dou/-/instrucao-normativa-rfb-n-2.312-de-13-de-marco-de-2026-692748727"
+						>IN RFB Nº 2.312/2026</a
+					>
+				</h6>
+
+				<!-- Receita Bruta Anual  -->
+				<section class="container faturamento">
+					<h2>Insira o valor da Receita Bruta Anual</h2>
+
+					<div class="items with-money-input">
+						<h4>Prestação de Serviços</h4>
+						<input
+							class="moneyInput"
+							type="text"
+							placeholder="R$ 0,00"
+							data-js="money"
+							id="serviços"
+							maxlength="13"
+						/>
+					</div>
+
+					<div class="items with-money-input">
+						<h4>
+							Comércio, Indústria e<br />
+							Transporte de Cargas
+						</h4>
+						<input
+							class="moneyInput"
+							type="text"
+							placeholder="R$ 0,00"
+							data-js="money"
+							id="comércio"
+							maxlength="13"
+						/>
+					</div>
+
+					<div class="items with-money-input">
+						<h4>Transporte de Passageiros</h4>
+						<input
+							class="moneyInput"
+							type="text"
+							placeholder="R$ 0,00"
+							data-js="money"
+							id="transporte"
+							maxlength="13"
+						/>
+					</div>
+				</section>
+
+				<!-- Despesas Anuais  -->
+				<section class="container despesas">
+					<h2>Insira o valor das Despesas Anuais</h2>
+
+					<div class="items with-money-input">
+						<div class="accordion-header">
+							<i class="accordion-icon"></i>
+							<h4>
+								Pró-labore, DAS, Mercadorias,<br />
+								Aluguel, Água, Luz e Tel.
+							</h4>
+						</div>
+
+						<p class="accordion-content">
+							Só é possível descontar as despesas que estiverem no CNPJ da empresa comprovados com
+							nota fiscal e/ou recibo.<br /><br />
+							As duas despesas mais comuns são o Pró-labore e o DAS, pago mensalmente por todo dono
+							de uma MEI.<br /><br />
+							<!-- No DAS está incluso o valor de 5% de um salário mínimo, destinado ao INSS (Previdência
+							Social), com isso, é possível declarar até 1 salário mínimo de Pró-labore sem pagar
+							nada a mais de impostos. Acima desse valor é necessário pagar uma porcentagem a mais
+							de INSS.<br /><br /> -->
+						</p>
+						<input
+							class="moneyInput"
+							type="text"
+							placeholder="R$ 0,00"
+							data-js="money"
+							id="despesas"
+							maxlength="13"
+						/>
+					</div>
+				</section>
+
+				<!-- Resultado  -->
+				<section class="container lucro">
+					<h2>Conta Automática</h2>
+
+					<div class="items with-money-input">
+						<div class="accordion-header">
+							<i class="accordion-icon"></i>
+							<div class="texto-conta">
+								<h4>Receita Bruta Anual</h4>
+								<p class="conta">
+									<span id="conta-serviço">0</span> + <span id="conta-comércio">0</span> +
+									<span id="conta-transporte">0</span>
+								</p>
+							</div>
+						</div>
+						<p class="accordion-content">
+							É a soma de todos os valores recebidos ao longo do ano de 2025.<br /><br />
+						</p>
+						<div class="resultados-value moneyInput" id="receita-bruta-apurado">R$ 0,00</div>
+					</div>
+
+					<div class="items with-money-input">
+						<div class="accordion-header">
+							<i class="accordion-icon"></i>
+							<div class="texto-conta">
+								<h4>Lucro Apurado</h4>
+								<p class="conta">
+									<span id="conta-receita-bruta">0</span> -
+									<span class="red" id="conta-despesas">0</span>
+								</p>
+							</div>
+						</div>
+						<p class="accordion-content">
+							O Lucro Apurado é a Receita Bruta menos as despesas do ano.<br /><br />
+						</p>
+						<div class="resultados-value moneyInput" id="lucro-apurado">R$ 0,00</div>
+					</div>
+
+					<div class="items with-money-input">
+						<div class="accordion-header">
+							<i class="accordion-icon"></i>
+							<div class="texto-conta">
+								<h4>Rendimento Isento</h4>
+								<p class="conta">
+									(<span id="conta-serviço-p">0</span> * 0,32) + (<span id="conta-comércio-p"
+										>0</span
+									>
+									* 0,08) + (<span id="conta-transporte-p">0</span> * 0,16)
+								</p>
+							</div>
+						</div>
+						<p class="accordion-content">
+							Para cada categoria de MEI existe uma parcela isenta de tributação, sendo:<br /><br />
+							32% - Prestação de Serviços.<br />
+							8% - Comércio, Indústria e Transporte de Cargas.<br />
+							16% - Transporte de Passageiros.<br /><br />
+						</p>
+						<div class="resultados-value moneyInput green" id="lucro-isento">R$ 0,00</div>
+					</div>
+
+					<div class="items with-money-input">
+						<div class="accordion-header">
+							<i class="accordion-icon"></i>
+							<div class="texto-conta">
+								<h4>Rendimento Tributável</h4>
+								<p class="conta">
+									<span id="conta-lucro-apurado">0</span> -
+									<span class="green" id="conta-rendimento-isento">0</span>
+								</p>
+							</div>
+						</div>
+						<p class="accordion-content">
+							O Rendimento Tributável é o valor considerado para saber se você deve ou não pagar o
+							imposto de renda pessoa física. Para chegar nessa conta deve se fazer o Lucro Apurado
+							menos o Rendimento Isento. <br /><br />
+							Se o valor ficar acima de R$ 35.584,00, você é obrigado a declarar o IRPF.<br /><br />
+						</p>
+						<div class="resultados-value moneyInput green" id="lucro-tributável">R$ 0,00</div>
+					</div>
+
+					<h2>Resultado</h2>
+
+					<div class="items contador">
+						<h4>
+							Declaração Anual do IRPF &nbsp
+							<span class="green" id="result-title">Não Obrigatória</span>
+						</h4>
+						<p id="result-text">
+							<br />
+							Se você recebeu outros valores como Pessoa Física e a soma desses valores com o
+							Rendimento Tributável ficou maior que R$ 35.584,00, será necessário realizar o IRPF.
+							Acompanhe abaixo mais informações.
+						</p>
+					</div>
+
+					<div class="items contador">
+						<h4>Como declarar o IRPF?</h4>
+						<p>
+							A declaração é feita através do
+							<a target="_blank" href="https://www.gov.br/receitafederal/pt-br"
+								>software da Receita Federal</a
+							>.<br />
+							É preciso acessar e preencher duas fichas de declaração no software — “Rendimentos
+							isentos e não tributáveis” e “Rendimentos tributáveis recebidos de pessoa jurídica” —
+							e preencher com a parcela isenta do lucro e o lucro tributável, respectivamente.
+						</p>
+					</div>
+				</section>
+
+				<!-- Radio Checkbox  -->
+				<section class="container checkbox">
+					<h2>Você se enquadra em alguma dessas opções como Pessoa Física em 2025?</h2>
+					<div class="items">
+						<div class="list">
+							<h4>- Recebeu rendimentos isentos acima de R$ 200.000,00?</h4>
+							<h4>- Vendeu ativos na bolsa de valores somando mais de R$ 40.000,00, ou com lucro tributável?</h4>
+							<h4>- Obteve receita bruta superior a R$ 177.920,00 em atividade rural?</h4>
+							<h4>- Possui bens no valor acima de R$ 800.000,00?</h4>
+							<h4>- Vendeu imóveis com isenção de IR?</h4>
+						</div>
+
+						<div class="custom-radio">
+							<p>
+								Caso sua resposta seja sim, você é obrigado a realizar a declaração do IRPF mesmo se
+								o rendimento tributável ficou abaixo de R$ 35.584,00.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Disclaimer  -->
+				<section class="container aviso-legal">
+					<h2>Aviso Legal</h2>
+					<div>
+						<p>
+							Ao acessar o site <a href="https://calcmei.com.br">calcMEI</a> você concorda em
+							cumprir com os
+							<a href="https://calcmei.com.br/termos-de-uso.html">Termos de Uso </a> e aceita nossa
+							<a href="https://calcmei.com.br/privacidade.html">Política de Privacidade.</a>
+						</p>
+						<p>
+							O calcMEI.com.br não se responsabiliza pelo uso ou pelas ações tomadas com base no
+							conteúdo deste site.
+						</p>
+						<p>
+							Os cálculos são oferecidos à título indicativo e não caracterizam conselho fiscal
+							oferecido por um contador agregado.
+						</p>
+					</div>
+				</section>
+				<!-- Recomendação de Contador - Entrar em contato -->
+				<!-- <section class="container contador">
+					<h2>Se interessou mais?</h2>
+
+					<div class="items contador">
+						<h4>Fulano de tal</h4>
+						<p>É bom!</p>
+					</div>
+				</section> -->
+			</div>
+		</main>
+
+		<footer>
+			<div>
+				<nav>
+					<a href="/contato.html">Contato</a> |
+					<a href="/privacidade.html">Política de Privacidade</a> |
+					<a href="/termos-de-uso.html">Termos de Uso</a>
+				</nav>
+				<p>© Copyright 2022 - calcMEI</p>
+			</div>
+		</footer>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9442959543814157"
+     crossorigin="anonymous"></script>
+	</body>
+</html>

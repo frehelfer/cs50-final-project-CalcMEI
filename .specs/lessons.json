@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 6,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "weak_test::language scans must cover every place the rule names identifiers comments test titles and list the domain stems from the glossary with a planted case per stem",
+      "text": "Language scans must cover every place the rule names (identifiers, comments, test titles) and list the domain stems from the glossary, with a planted case per stem",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "rules-engine-refactor"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C28 tests/core/purity.test.js PT_WORDS (tests)"
+      ],
+      "created": "2026-11-13T19:20:32Z",
+      "last_seen": "2026-11-13T19:20:32Z"
+    },
+    {
+      "id": "L-002",
+      "key": "weak_test::a dom freedom scan must flag dom methods called on passed in objects not only dom globals",
+      "text": "A DOM-freedom scan must flag DOM methods called on passed-in objects, not only DOM globals",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "rules-engine-refactor"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C6 tests/core/purity.test.js DOM_REFERENCE (tests)"
+      ],
+      "created": "2026-11-13T19:20:32Z",
+      "last_seen": "2026-11-13T19:20:32Z"
+    },
+    {
+      "id": "L-003",
+      "key": "weak_test::derive the forbidden values list of a no hard coding check from the config itself and scan attributes and head as well as body text",
+      "text": "Derive the forbidden-values list of a no-hard-coding check from the config itself, and scan attributes and head as well as body text",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "rules-engine-refactor"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C20 tests/html-rules.test.js YEARLY_VALUES (tests)"
+      ],
+      "created": "2026-11-13T19:20:32Z",
+      "last_seen": "2026-11-13T19:20:32Z"
+    },
+    {
+      "id": "L-004",
+      "key": "weak_test::assert the full error message not a word every error message contains",
+      "text": "Assert the full error message, not a word every error message contains",
+      "signal": "weak_test",
+      "scope": "tests",
+      "status": "candidate",
+      "features": [
+        "rules-engine-refactor"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C12 tests/core/validateRules.test.js null case (tests)"
+      ],
+      "created": "2026-11-13T19:20:32Z",
+      "last_seen": "2026-11-13T19:20:32Z"
+    },
+    {
+      "id": "L-005",
+      "key": "ac_gap::validate the format of every config string the presenter parses not only its type",
+      "text": "Validate the format of every config string the presenter parses, not only its type",
+      "signal": "ac_gap",
+      "scope": "core",
+      "status": "candidate",
+      "features": [
+        "rules-engine-refactor"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "verification finding 5 core/validateRules.js lastUpdated (core)"
+      ],
+      "created": "2026-11-13T19:20:32Z",
+      "last_seen": "2026-11-13T19:20:32Z"
+    }
+  ]
+}
