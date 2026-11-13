@@ -352,7 +352,7 @@ T16
 
 - [x] `tests/dom.test.js` adds one case that loads index.html with its real `<script type="module">` (jsdom + file resources, or a static import of the entry against a jsdom global) and types "100000" into serviços, which shows "OBRIGATÓRIA"
 - [x] `tests/core/purity.test.js` LANG-01 scan list extended to `public/scripts/calculator.js`, `calculator-dom.js`, `presenter.js` and `accordion.js` (T10 scans only core + tests, because the legacy calculator.js stays pt-BR until this task)
-- [ ] Manual walk: `npx serve public`, type the spec values, compare against production calcmei.com.br
+- [x] Manual walk: `npx serve public`, type the spec values, compare against production calcmei.com.br
 - [x] Build gate passes
 
 **Tests**: integration
@@ -478,7 +478,7 @@ Proof: `grep -q "## Glossary" CLAUDE.md && grep -q "taxableIncome" CLAUDE.md`
 
 **Settled mid-build:** The lockfile was regenerated (393260d) because npm dropped rolldown's platform bindings and vitest failed on a clean `npm ci`. firebase and webpack were kept at 9.9.3/5.74.0 (orchestrator call). Batch 2 named `formatRate` → `{percent, decimal}` and fixed `RuleKey` to 16 keys in core/types.js (design discretion). The Build line was restored after batch 2. LANG-01 scan grows with the files: T10 covers core + tests, and T15 adds the browser scripts once the legacy pt-BR calculator.js is replaced (orchestrator call). Sub-agent model mix - user: "go ahead and start with the mix in the table in sub agents" (batch 1 Haiku, batch 2 Sonnet, batch 3 Opus, Verifier Sonnet). The Build line is temporarily `none` for batch 1 because the repo has no build/test commands until Phase 1 creates them.
 **Dispatched:** batch 1 (Phase 1, T1-T3, Haiku) at HEAD b8a12c6 - returned (d910c1a, 1910209, 238987f); batch 2 (Phase 2, T4-T10, Sonnet) at HEAD 238987f - returned (bf5f3db..f78d61d, 44 tests); batch 3 (Phases 3-4, T11-T16, Opus) at HEAD 393260d - returned (ade6d0a..76549b4, 69 tests); Verifier (Sonnet) at HEAD 1ac6273 - returned (5 findings, all closed in dabbca4; gate 0 errors)
-**Walked:** No browser tool in this session, so the click-through goes to the user (see report). Orchestrator checks done instead: every module in the `calculator.js` graph resolves to a file under `public/` with relative `.js` paths (7 files, 0 problems), and the graph imports in Node without touching the DOM. The UI-01 golden master in jsdom covers the typing behaviour over 212 input sets. To reach each state: open `/`, type into Serviços/Comércio/Transporte/Despesas (e.g. Serviços 100.000,00 → OBRIGATÓRIA; 50.000,00 → Não Obrigatória; Serviços 1.000,00 + Despesas 5.000,00 → R$ 0,00 and conta -4.000).
+**Walked:** 2026-11-13 the user walked it in a browser (served `public/` with `python3 -m http.server`) - user: "works fine". Before that, with no browser tool in this session: Orchestrator checks done instead: every module in the `calculator.js` graph resolves to a file under `public/` with relative `.js` paths (7 files, 0 problems), and the graph imports in Node without touching the DOM. The UI-01 golden master in jsdom covers the typing behaviour over 212 input sets. To reach each state: open `/`, type into Serviços/Comércio/Transporte/Despesas (e.g. Serviços 100.000,00 → OBRIGATÓRIA; 50.000,00 → Não Obrigatória; Serviços 1.000,00 + Despesas 5.000,00 → R$ 0,00 and conta -4.000).
 
 ---
 
